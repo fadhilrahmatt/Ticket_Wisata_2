@@ -14,7 +14,7 @@
           <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
             <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Explore <br></strong> your amazing city</h1>
             <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
-            <a href="#popular" class="btn btn-get-started px-4 mt-4">
+            <a href="#popular" class="btn btn-primary mt-4 px-4 py-3">
               Get Started
             </a>
           </div>
@@ -114,7 +114,7 @@
 		    						</p>
 	    						</div>
 	    						<div class="two">
-	    							<span class="price">${{ $item->price }}</span>
+	    							<span class="price"><small>Rp {{ $item->price }}</small></span>
     							</div>
     						</div>
     						<p>Far far away, behind the word mountains, far from the countries</p>
@@ -168,7 +168,7 @@
 		    						</p>
 	    						</div>
 	    						<div class="two">
-	    							<span class="price per-price">$40<br><small>/night</small></span>
+	    							<span class="price per-price"><small>Rp 120.000</small><br><small>/night</small></span>
     							</div>
     						</div>
     						<p>Far far away, behind the word mountains, far from the countries</p>
@@ -201,7 +201,7 @@
 		    						</p>
 	    						</div>
 	    						<div class="two">
-	    							<span class="price per-price">$40<br><small>/night</small></span>
+	    							<span class="price per-price"><small>Rp 120.000</small><br><small>/night</small></span>
     							</div>
     						</div>
     						<p>Far far away, behind the word mountains, far from the countries</p>
@@ -234,7 +234,7 @@
 		    						</p>
 	    						</div>
 	    						<div class="two">
-	    							<span class="price per-price">$40<br><small>/night</small></span>
+	    							<span class="price per-price"><small>Rp 120.000</small><br><small>/night</small></span>
     							</div>
     						</div>
     						<p>Far far away, behind the word mountains, far from the countries</p>
@@ -267,7 +267,7 @@
 		    						</p>
 	    						</div>
 	    						<div class="two">
-	    							<span class="price per-price">$40<br><small>/night</small></span>
+	    							<span class="price per-price"><small>Rp 120.000</small><br><small>/night</small></span>
     							</div>
     						</div>
     						<p>Far far away, behind the word mountains, far from the countries</p>
@@ -300,7 +300,7 @@
 		    						</p>
 	    						</div>
 	    						<div class="two">
-	    							<span class="price per-price">$40<br><small>/night</small></span>
+	    							<span class="price per-price"><small>Rp 120.000</small><br><small>/night</small></span>
     							</div>
     						</div>
     						<p>Far far away, behind the word mountains, far from the countries</p>
