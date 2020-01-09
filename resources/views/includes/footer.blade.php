@@ -57,7 +57,7 @@
     <div class="container-fluid">
     <div class="row border-top justify-content-center align-items-center pt-4">
         <div class="col-auto text-gray-500 font-weight-light">
-        2019 Copyright Nomads • All rights reserved • Made in Jakarta
+        2020 Copyright GTour • All rights reserved • Made in Yogyakarta
         </div>
     </div>
     </div>
@@ -146,7 +146,7 @@
     <div class="container-fluid">
     <div class="row border-top justify-content-center align-items-center pt-4">
         <div class="col-auto text-gray-500 font-weight-light">
-        2019 Copyright Nomads • All rights reserved • Made in Jakarta
+        2020 Copyright GTour • All rights reserved • Made in Yogyakarta
         </div>
     </div>
     </div>

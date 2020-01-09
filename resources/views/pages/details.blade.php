@@ -3,42 +3,108 @@
 @section('title', 'Detail Tour')
 
 @section('content')
-<main>
-    <section class="section-details-header"></section>
-    <section class="section-details-content">
-    <div class="container">
-        <div class="row">
-        <div class="col p-0 pl-3 pl-lg-0">
-            <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item" aria-current="page">
-                Paket Travel
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                Details
-                </li>
-            </ol>
-            </nav>
+    
+<div class="hero-wrap js-fullheight" style="background-image: url('{{ url('frontend/images/bg_5.jpg')}}');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotel.html">Wisata</a></span> <span>Single Wisata</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Wisata Details</h1>
+          </div>
         </div>
-        </div>
+      </div>
+    </div>
+
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
         <div class="row">
-        <div class="col-lg-8 pl-lg-0">
-            <div class="card card-details">
-            <h1>{{ $item->title }}</h1>
-            <p>
-                {{ $item->location }}
-            </p>
-            @if($item->galleries->count() > 0)
-                <div class="gallery">
-                    <div class="xzoom-container">
-                        <img
-                            class="xzoom"
-                            id="xzoom-default"
-                            src="{{ Storage::url($item->galleries->first()->image) }}"
-                            xoriginal="{{ Storage::url($item->galleries->first()->image) }}"
-                        />
-                    </div>
-                    <div class="xzoom-thumbs">
+        	<div class="col-lg-3 sidebar">
+        		<div class="sidebar-wrap bg-light ftco-animate">
+                    <h3 class="heading mb-4">Trip Informations</h3>
+                    <table class="trip-informations">
+                        <tr>
+                        <th width="50%">Date of Ticket</th>
+                        <td width="50%" class="text-right">{{ \Carbon\Carbon::create($item->date)->format('F n, Y') }}</td>
+                        </tr>
+                        <tr>
+                        <th width="50%">Type</th>
+                        <td width="50%" class="text-right">{{ $item->type }}</td>
+                        </tr>
+                        <tr>
+                        <th width="50%">Price</th>
+                        <td width="50%" class="text-right">${{ $item->price }},00 / person</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="join-container">
+                    @auth
+                        <form action="{{ route('checkout_process', $item->id) }}" method="POST">
+                            @csrf
+                            <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
+                                Join Now
+                            </button>
+                        </form>
+                    @endauth
+                    @guest
+                        <a href="{{ route('login') }}" class="btn btn-block btn-join-now mt-3 py-2">
+                            Login or Register to Join
+                        </a>
+                    @endguest
+                </div>
+
+        		<div class="sidebar-wrap bg-light ftco-animate">
+        			<h3 class="heading mb-4">Star Rating</h3>
+        			<form method="post" class="star-rating">
+							  <div class="form-check">
+									<input type="checkbox" class="form-check-input" id="exampleCheck1">
+									<label class="form-check-label" for="exampleCheck1">
+										<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
+									</label>
+							  </div>
+							  <div class="form-check">
+						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						    	   <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
+						      </label>
+							  </div>
+							  <div class="form-check">
+						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+						     </label>
+							  </div>
+							  <div class="form-check">
+							    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+						      </label>
+							  </div>
+							  <div class="form-check">
+						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+							    </label>
+							  </div>
+							</form>
+        		</div>
+          </div>
+          <div class="col-lg-9">
+          	<div class="row">
+          		<div class="col-md-12 ftco-animate">
+          			<div class="single-slider owl-carousel">
+                      @if($item->galleries->count() > 0)
+                        <div class="xzoom-container">
+                            <img
+                                class="xzoom"
+                                id="xzoom-default"
+                                src="{{ Storage::url($item->galleries->first()->image) }}"
+                                xoriginal="{{ Storage::url($item->galleries->first()->image) }}"
+                            />
+                        </div>
+                        <div class="xzoom-thumbs">
                         @foreach ($item->galleries as $gallery)
                             <a href="{{ Storage::url($gallery->image) }}">
                                 <img
@@ -49,58 +115,32 @@
                                 />
                             </a>
                         @endforeach
-                    </div>
-                </div>
-            @endif
-            <h2>Tentang Wisata</h2>
-            <p>
-                {!! $item->about !!}
-            </p>
-            </div>
+                        </div>
+                    @endif
+          			</div>
+          		</div>
+          		<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
+          			<span>Our Best hotels &amp; Rooms</span>
+          			<h2>{{ $item->title }}</h2>
+          			<p class="rate mb-5">
+          				<span class="loc"><a href="#"><i class="icon-map"></i>{{ $item->location }}</a></span>
+          				<span class="star">
+    							<i class="icon-star"></i>
+    							<i class="icon-star"></i>
+    							<i class="icon-star"></i>
+    							<i class="icon-star"></i>
+    							<i class="icon-star-o"></i>
+    							8 Rating</span>
+                    </p>
+                    <h5>Tentang Wisata</h5>
+                    <p>{!! $item->about !!}</p>
+          		</div>
+          	</div>
+          </div> <!-- .col-md-8 -->
         </div>
-        <div class="col-lg-4">
-            <div class="card card-details card-right">
-            <h2>Members are going</h2>
-            <div class="members my-2">
-                <img src="{{ url('frontend/images/members.png') }}" alt="" class="w-75" />
-            </div>
-            <hr />
-            <h2>Trip Informations</h2>
-            <table class="trip-informations">
-                <tr>
-                <th width="50%">Date of Ticket</th>
-                <td width="50%" class="text-right">{{ \Carbon\Carbon::create($item->date)->format('F n, Y') }}</td>
-                </tr>
-                <tr>
-                <th width="50%">Type</th>
-                <td width="50%" class="text-right">{{ $item->type }}</td>
-                </tr>
-                <tr>
-                <th width="50%">Price</th>
-                <td width="50%" class="text-right">${{ $item->price }},00 / person</td>
-                </tr>
-            </table>
-            </div>
-            <div class="join-container">
-                @auth
-                    <form action="{{ route('checkout_process', $item->id) }}" method="POST">
-                        @csrf
-                        <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
-                            Join Now
-                        </button>
-                    </form>
-                @endauth
-                @guest
-                    <a href="{{ route('login') }}" class="btn btn-block btn-join-now mt-3 py-2">
-                        Login or Register to Join
-                    </a>
-                @endguest
-            </div>
-        </div>
-        </div>
-    </div>
-    </section>
-</main>
+      </div>
+    </section> <!-- .section -->
+
 @endsection
 
 @push('prepend-style')
@@ -118,6 +158,6 @@
         Xoffset: 15
     });
     });
-</script>
-@endpush
+    </script>
+    @endpush
 

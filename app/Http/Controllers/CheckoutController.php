@@ -35,8 +35,8 @@ class CheckoutController extends Controller
         TransactionDetail::create([
             'transactions_id' => $transaction->id,
             'username' => Auth::user()->username,
-            'region' => 'ID',
-            'no_hp' =>  '+62',
+            'region' => Auth::user()->region,
+            'no_hp' => Auth::user()->no_hp,
         ]);
 
         return redirect()->route('checkout', $transaction->id);
@@ -64,7 +64,6 @@ class CheckoutController extends Controller
     public function create(Request $request, $id){
         $request->validate([
             'username' => 'required|string|exists:users, username',
-            'no_hp' => 'required|string',
         ]);
 
         $data = $request->all();

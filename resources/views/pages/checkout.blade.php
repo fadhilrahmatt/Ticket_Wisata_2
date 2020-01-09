@@ -209,6 +209,7 @@
 
 @push('prepend-style')
 <link rel="stylesheet" href="{{ url('frontend/libraries/gijgo/css/gijgo.min.css') }}" />
+<link rel="stylesheet" href="{{ url('frontend/css/main.css') }}" />
 @endpush
 
 @push('addon-script')
