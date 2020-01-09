@@ -1,5 +1,5 @@
 {{-- Navbar --}}
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-white ftco-navbar-dark" id="ftco-navbar">
          <div class="container">
              <a class="navbar-brand" href="{{ route('home') }}">
                  <img src="{{ url('frontend/images/logo.png') }}" alt="" />
