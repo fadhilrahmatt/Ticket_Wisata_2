@@ -21,7 +21,7 @@
       <div class="container">
         <div class="row">
         	<div class="col-lg-3 sidebar">
-        		<div class="sidebar-wrap bg-light ftco-animate">
+        		<div class="card card-details">
                     <h3 class="heading mb-4">Trip Informations</h3>
                     <table class="trip-informations">
                         <tr>
@@ -34,7 +34,7 @@
                         </tr>
                         <tr>
                         <th width="50%">Price</th>
-                        <td width="50%" class="text-right">${{ $item->price }},00 / person</td>
+                        <td width="50%" class="text-right">Rp {{ $item->price }} / person</td>
                         </tr>
                     </table>
                 </div>
@@ -55,7 +55,7 @@
                     @endguest
                 </div>
 
-        		<div class="sidebar-wrap bg-light ftco-animate">
+        		<div class="card card-details">
         			<h3 class="heading mb-4">Star Rating</h3>
         			<form method="post" class="star-rating">
 							  <div class="form-check">
@@ -95,28 +95,23 @@
           	<div class="row">
           		<div class="col-md-12 ftco-animate">
           			<div class="single-slider owl-carousel">
-                      @if($item->galleries->count() > 0)
-                        <div class="xzoom-container">
+                  @if($item->galleries->count() > 0)
+                    <div class="item">
+                      <div class="hotel-img" style="background-image: url({{Storage::url($item->galleries->first()->image)}});"></div>
+                    </div>
+                    <div class="item">
+                    @foreach ($item->galleries as $gallery)
+                        <a href="{{ Storage::url($gallery->image) }}">
                             <img
-                                class="xzoom"
-                                id="xzoom-default"
-                                src="{{ Storage::url($item->galleries->first()->image) }}"
-                                xoriginal="{{ Storage::url($item->galleries->first()->image) }}"
+                                class="item"
+                                width="128"
+                                src="{{ Storage::url($gallery->image) }}"
+                                xpreview="{{ Storage::url($gallery->image) }}"
                             />
-                        </div>
-                        <div class="xzoom-thumbs">
-                        @foreach ($item->galleries as $gallery)
-                            <a href="{{ Storage::url($gallery->image) }}">
-                                <img
-                                    class="xzoom-gallery"
-                                    width="128"
-                                    src="{{ Storage::url($gallery->image) }}"
-                                    xpreview="{{ Storage::url($gallery->image) }}"
-                                />
-                            </a>
-                        @endforeach
-                        </div>
-                    @endif
+                        </a>
+                    @endforeach
+                    </div>
+                  @endif
           			</div>
           		</div>
           		<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
@@ -160,4 +155,3 @@
     });
     </script>
     @endpush
-
